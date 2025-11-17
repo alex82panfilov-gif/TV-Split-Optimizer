@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from './Button';
-import { ChevronDownIcon } from './icons';
+import { ChevronDownIcon, DownloadIcon } from './icons';
 
 // Библиотека XLSX загружается из CDN, поэтому мы объявляем ее для TypeScript.
 declare const XLSX: any;
@@ -57,8 +57,23 @@ export const InstructionStep: React.FC<InstructionStepProps> = ({ onNext }) => {
     <div className="bg-white p-8 rounded-lg shadow-lg animate-fade-in">
       <h2 className="text-2xl font-bold mb-4 text-slate-800">Добро пожаловать в TV Split Optimizer!</h2>
       <p className="text-slate-600 mb-6">
-        Перед началом работы, пожалуйста, ознакомьтесь с требованиями к подготовке данных и методикой расчета. Корректный формат файлов — залог точного и быстрого расчета.
+        Этот инструмент поможет вам рассчитать четыре варианта ТВ-сплитов на основе ваших данных. Для начала, скачайте и заполните шаблоны.
       </p>
+
+      <div className="my-8 p-6 bg-sky-50 border-2 border-dashed border-sky-200 rounded-lg text-center">
+        <h3 className="text-xl font-bold text-sky-800 mb-2">Начните с шаблонов</h3>
+        <p className="text-sky-700 mb-6 max-w-2xl mx-auto">Это самый простой способ гарантировать правильный формат данных. Скачайте файлы, заполните их и загрузите на следующем шаге.</p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" variant="primary" onClick={() => handleDownloadTemplate('ratings')}>
+                <DownloadIcon className="w-5 h-5 mr-2" />
+                Скачать шаблон для Рейтингов
+            </Button>
+            <Button size="lg" variant="primary" onClick={() => handleDownloadTemplate('cpp')}>
+                <DownloadIcon className="w-5 h-5 mr-2" />
+                Скачать шаблон для Цен
+            </Button>
+        </div>
+      </div>
 
       <div className="mb-8 border border-sky-200 bg-sky-50 rounded-lg overflow-hidden">
         <button
@@ -140,8 +155,8 @@ export const InstructionStep: React.FC<InstructionStepProps> = ({ onNext }) => {
 
       <div className="space-y-6 text-slate-700">
         <div>
-          <h3 className="text-lg font-semibold mb-2">1. Подготовьте два обязательных файла</h3>
-          <p className="mb-4">Вам понадобятся два отчета в формате Excel (.xlsx): один с рейтингами, другой с ценами.</p>
+          <h3 className="text-lg font-semibold mb-2">Требования к файлам</h3>
+          <p className="mb-4">Если вы используете свои файлы вместо шаблонов, убедитесь, что они соответствуют следующим требованиям:</p>
           <div className="pl-4 border-l-4 border-sky-200 space-y-4">
             <div>
               <h4 className="font-bold">Файл с Рейтингами</h4>
@@ -168,19 +183,6 @@ export const InstructionStep: React.FC<InstructionStepProps> = ({ onNext }) => {
               </ul>
             </div>
           </div>
-        </div>
-        
-        <div>
-            <h3 className="text-lg font-semibold mb-2">2. Скачайте и используйте наши шаблоны</h3>
-            <p className="mb-4">Чтобы избежать ошибок, мы настоятельно рекомендуем использовать наши шаблоны. Они уже содержат правильные названия столбцов.</p>
-            <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="secondary" className="w-full" onClick={() => handleDownloadTemplate('ratings')}>
-                    Скачать шаблон для Рейтингов
-                </Button>
-                <Button variant="secondary" className="w-full" onClick={() => handleDownloadTemplate('cpp')}>
-                    Скачать шаблон для Цен
-                </Button>
-            </div>
         </div>
       </div>
 
