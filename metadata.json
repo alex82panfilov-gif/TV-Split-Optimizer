@@ -1,0 +1,5 @@
+{
+  "name": "TV Split Optimizer",
+  "description": "A web application to automatically calculate four different TV advertising splits (based on TCPP, Affinity, efficiency, and natural distribution) and generate summary comparison reports for each specified region.",
+  "requestFramePermissions": []
+}
