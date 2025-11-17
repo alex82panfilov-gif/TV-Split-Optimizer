@@ -66,7 +66,7 @@ const ConstructorPanel: React.FC<{
 }> = ({ channels, onCalculate, onClose }) => {
     const [selected, setSelected] = useState<Set<string>>(new Set());
     const [logic, setLogic] = useState<'TCPP' | 'Affinity' | 'Эффективность' | 'Custom'>('TCPP');
-    // FIX: Explicitly typed the 'weights' state to resolve the 'Operator '+' cannot be applied to types 'unknown' and 'unknown'' error by ensuring its properties are always treated as numbers.
+    // FIX: Explicitly typed the 'weights' state to resolve an error where the '+' operator could not be applied to inferred 'unknown' types.
     const [weights, setWeights] = useState<{ aff: number; tcpp: number; eff: number }>({ aff: 40, tcpp: 30, eff: 30 });
 
     const totalWeight = weights.aff + weights.tcpp + weights.eff;
